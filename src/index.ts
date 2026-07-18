@@ -187,7 +187,11 @@ export const normalizeOsvAdvisory = (
     options.sourceUrl?.(id) ?? `${OSV_API_URL}/vulns/${encodeURIComponent(id)}`;
   return {
     affected: normalizeAffected(advisory.affected),
-    aliases: unique([id, ...stringArray(advisory.aliases)]),
+    aliases: unique([
+      id,
+      ...stringArray(advisory.aliases),
+      ...stringArray(advisory.upstream),
+    ]),
     contract: VULNERABILITY_CONTRACT_VERSION,
     details: optionalText(advisory.details),
     id,

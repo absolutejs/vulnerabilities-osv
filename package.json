@@ -1,6 +1,6 @@
 {
   "name": "@absolutejs/vulnerabilities-osv",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Official OSV API ingestion and advisory normalization for AbsoluteJS vulnerability management.",
   "type": "module",
   "license": "BSL-1.1",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 - 2026-07-18
+
+- Preserve OSV `upstream` identifiers used by Ubuntu records as advisory
+  aliases for cross-source correlation.
+
 ## 0.1.1 - 2026-07-18
 
 - Preserve provider severity labels such as Ubuntu's severity as normalized

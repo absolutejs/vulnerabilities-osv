@@ -30,12 +30,17 @@ const advisory = {
     { score: "medium", type: "Ubuntu" },
   ],
   summary: "Fixture advisory",
+  upstream: ["CVE-2026-0002"],
 };
 
 describe("OSV normalization", () => {
   test("preserves aliases, affected ranges, and source provenance", () => {
     const result = normalizeOsvAdvisory(advisory, { fetchedAt });
-    expect(result.aliases).toEqual(["GHSA-fixture", "CVE-2026-0001"]);
+    expect(result.aliases).toEqual([
+      "GHSA-fixture",
+      "CVE-2026-0001",
+      "CVE-2026-0002",
+    ]);
     expect(result.affected?.[0]?.ranges[0]).toEqual({
       events: [{ introduced: "0" }, { fixed: "1.2.3" }],
       repository: null,
