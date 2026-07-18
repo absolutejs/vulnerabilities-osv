@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3 - 2026-07-18
+
+- Upgrade to the durable persistence contracts in
+  `@absolutejs/vulnerabilities@0.5.0`.
+
 ## 0.1.2 - 2026-07-18
 
 - Preserve OSV `upstream` identifiers used by Ubuntu records as advisory
