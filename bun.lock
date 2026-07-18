@@ -6,7 +6,7 @@
       "name": "@absolutejs/vulnerabilities-osv",
       "dependencies": {
         "@absolutejs/manifest": "0.3.0",
-        "@absolutejs/vulnerabilities": "0.6.0",
+        "@absolutejs/vulnerabilities": ">=0.6.0 <0.8.0",
         "@sinclair/typebox": "0.34.52",
       },
       "devDependencies": {
