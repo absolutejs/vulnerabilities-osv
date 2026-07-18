@@ -25,7 +25,10 @@ const advisory = {
   modified: "2026-07-18T18:30:00Z",
   published: "2026-07-17T18:30:00Z",
   schema_version: "1.7.4",
-  severity: [{ score: "CVSS:3.1/AV:N/AC:L", type: "CVSS_V3" }],
+  severity: [
+    { score: "CVSS:3.1/AV:N/AC:L", type: "CVSS_V3" },
+    { score: "medium", type: "Ubuntu" },
+  ],
   summary: "Fixture advisory",
 };
 
@@ -40,6 +43,12 @@ describe("OSV normalization", () => {
     });
     expect(result.affected?.[0]?.versions).toEqual(["1.0.0"]);
     expect(result.severity[0]?.system).toBe("cvss-v3");
+    expect(result.severity[1]).toEqual({
+      score: null,
+      system: "vendor",
+      value: "medium",
+      vector: "medium",
+    });
     expect(result.source).toEqual({
       fetchedAt,
       name: "osv",

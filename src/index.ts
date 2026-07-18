@@ -69,6 +69,21 @@ const severitySystem = (
   if (value === "CVSS_V2") return "cvss-v2";
   if (value === "CVSS_V3") return "cvss-v3";
   if (value === "CVSS_V4") return "cvss-v4";
+  return value.length > 0 ? "vendor" : "unknown";
+};
+
+const severityValue = (
+  value: string,
+): VulnerabilityAdvisory["severity"][number]["value"] => {
+  const normalized = value.toLowerCase();
+  if (
+    normalized === "critical" ||
+    normalized === "high" ||
+    normalized === "medium" ||
+    normalized === "low" ||
+    normalized === "negligible"
+  )
+    return normalized;
   return "unknown";
 };
 
@@ -85,7 +100,7 @@ const normalizeSeverity = (
       {
         score: null,
         system: severitySystem(type.toUpperCase()),
-        value: "unknown" as const,
+        value: severityValue(score),
         vector: score,
       },
     ];

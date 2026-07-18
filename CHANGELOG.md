@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 - 2026-07-18
+
+- Preserve provider severity labels such as Ubuntu's severity as normalized
+  vendor severity.
+
 ## 0.1.0 - 2026-07-18
 
 - Add official OSV `querybatch` ingestion with per-query pagination.
