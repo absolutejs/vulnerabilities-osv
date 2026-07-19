@@ -107,6 +107,28 @@ const normalizeSeverity = (
   });
 };
 
+const databaseSeverity = (advisory: JsonObject) => {
+  if (
+    typeof advisory.database_specific !== "object" ||
+    advisory.database_specific === null ||
+    Array.isArray(advisory.database_specific)
+  )
+    return [];
+  const severity = optionalText(
+    (advisory.database_specific as JsonObject).severity,
+  );
+  if (severity === null) return [];
+
+  return [
+    {
+      score: null,
+      system: "vendor" as const,
+      value: severityValue(severity),
+      vector: severity,
+    },
+  ];
+};
+
 const normalizeAffected = (
   value: unknown,
 ): NonNullable<VulnerabilityAdvisory["affected"]> => {
@@ -199,7 +221,10 @@ export const normalizeOsvAdvisory = (
     publishedAt: advisory.published
       ? timestamp(advisory.published, "OSV advisory published")
       : null,
-    severity: normalizeSeverity(advisory.severity),
+    severity: [
+      ...normalizeSeverity(advisory.severity),
+      ...databaseSeverity(advisory),
+    ],
     source: {
       fetchedAt: timestamp(options.fetchedAt, "OSV fetchedAt"),
       name: options.sourceName ?? "osv",

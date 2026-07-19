@@ -20,6 +20,7 @@ const advisory = {
     },
   ],
   aliases: ["CVE-2026-0001"],
+  database_specific: { severity: "critical" },
   details: "Fixture details",
   id: "GHSA-fixture",
   modified: "2026-07-18T18:30:00Z",
@@ -53,6 +54,12 @@ describe("OSV normalization", () => {
       system: "vendor",
       value: "medium",
       vector: "medium",
+    });
+    expect(result.severity[2]).toEqual({
+      score: null,
+      system: "vendor",
+      value: "critical",
+      vector: "critical",
     });
     expect(result.source).toEqual({
       fetchedAt,

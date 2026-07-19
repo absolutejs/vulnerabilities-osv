@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.7 - 2026-07-18
+
+- Preserve top-level OSV `database_specific.severity` values so deployment
+  admission can reliably block critical GitHub and vendor advisories.
+
 ## 0.1.6 - 2026-07-18
 
 - Verify and declare compatibility with the vulnerability alert policy
